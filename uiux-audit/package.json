@@ -1,0 +1,37 @@
+{
+  "name": "standalone-uiux-audit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Project-independent UI/UX, accessibility, content, and passive security auditing for any web URL",
+  "bin": {
+    "uiux-audit": "./cli.mjs"
+  },
+  "scripts": {
+    "audit": "node cli.mjs audit",
+    "setup": "playwright install chromium firefox webkit && node cli.mjs doctor --pretty",
+    "security": "npm audit --omit=dev",
+    "verify": "node cli.mjs doctor --pretty && node --test --test-concurrency=1 test/*.test.mjs",
+    "doctor": "node cli.mjs doctor --pretty",
+    "browsers": "playwright install chromium firefox webkit",
+    "browsers:chromium": "playwright install chromium",
+    "browsers:all": "playwright install chromium firefox webkit",
+    "matrix": "node scripts/run-browser-matrix.mjs",
+    "matrix:verify": "node --test test/matrix.test.mjs",
+    "test": "node --test --test-concurrency=1 test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "axe-core": "4.13.0",
+    "cspell-lib": "8.19.4",
+    "exceljs": "4.4.0",
+    "playwright": "1.63.0"
+  },
+  "overrides": {
+    "exceljs": {
+      "uuid": "11.1.1"
+    }
+  }
+}

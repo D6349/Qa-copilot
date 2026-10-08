@@ -1,0 +1,13 @@
+services:
+  qa-copilot:
+    build: .
+    container_name: qa-copilot
+    ports:
+      - "4100:4100"
+    volumes:
+      - ./data:/app/data
+      - ./workspace:/app/workspace
+    environment:
+      PORT: 4100
+      HOST: 0.0.0.0
+    restart: unless-stopped

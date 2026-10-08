@@ -1,0 +1,11 @@
+/node_modules/
+/output/
+/.auth/
+/baselines/*
+!/baselines/.gitkeep
+.env
+.env.*
+!.env.example
+*.storage-state.json
+/test-results/
+/playwright-report/

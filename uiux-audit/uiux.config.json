@@ -1,0 +1,103 @@
+{
+  "viewports": [
+    { "name": "mobile-320", "width": 320, "height": 568, "isMobile": true },
+    { "name": "mobile", "width": 390, "height": 844, "isMobile": true },
+    { "name": "tablet", "width": 768, "height": 1024, "isMobile": true },
+    { "name": "desktop", "width": 1440, "height": 900, "isMobile": false }
+  ],
+  "themes": ["light", "dark"],
+  "locale": "en-IN",
+  "timezoneId": "Asia/Calcutta",
+  "navigation": {
+    "waitUntil": "domcontentloaded",
+    "timeoutMs": 45000,
+    "settleMs": 1200
+  },
+  "capture": {
+    "fullPage": true,
+    "disableMotion": true,
+    "warmLazyContent": true,
+    "autoScrollDelayMs": 60,
+    "autoScrollMaxSteps": 40,
+    "maxElements": 1800,
+    "maxInteractiveStateSamples": 40,
+    "ignoreSelectors": [
+      "script",
+      "style",
+      "noscript",
+      "template",
+      "[data-uiux-ignore]"
+    ],
+    "maskSelectors": [
+      "input[type='password']",
+      "input[autocomplete='current-password']",
+      "input[autocomplete='new-password']",
+      "[data-sensitive]",
+      "[data-uiux-mask]"
+    ]
+  },
+  "thresholds": {
+    "minimumTextContrast": 4.5,
+    "minimumLargeTextContrast": 3,
+    "largeTextPx": 24,
+    "largeBoldTextPx": 18.66,
+    "minimumBodyFontPx": 14,
+    "minimumHardTextPx": 12,
+    "minimumLineHeightRatio": 1.2,
+    "recommendedBodyLineHeightRatio": 1.4,
+    "maximumNegativeLetterSpacingEm": 0.025,
+    "maximumUppercaseCharacters": 24,
+    "minimumTargetPx": 24,
+    "recommendedTargetPx": 44,
+    "minimumNonTextContrast": 3,
+    "maximumFontFamilies": 3,
+    "maximumFontSizes": 12,
+    "maximumPaletteColors": 18,
+    "maximumButtonVariants": 6,
+    "maximumInputVariants": 5,
+    "maximumRadiusTokens": 7,
+    "maximumShadowTokens": 6,
+    "maximumLineCharacters": 100,
+    "nearColorDistance": 12,
+    "imageAspectTolerance": 0.06
+  },
+  "accessibility": {
+    "axe": {
+      "enabled": true,
+      "tags": ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"],
+      "disabledRules": [
+        "aria-input-field-name",
+        "button-name",
+        "color-contrast",
+        "document-title",
+        "heading-order",
+        "html-has-lang",
+        "image-alt",
+        "input-button-name",
+        "label",
+        "landmark-one-main",
+        "link-name",
+        "meta-viewport",
+        "page-has-heading-one",
+        "select-name"
+      ],
+      "maximumNodesPerRule": 20
+    }
+  },
+  "content": {
+    "spelling": {
+      "enabled": true,
+      "locale": "en-IN",
+      "minimumWordLength": 4,
+      "maximumIssuesPerCapture": 50,
+      "ignoreUppercaseAcronyms": true,
+      "words": ["Aadhaar", "eSign", "GSTIN", "IFSC", "KYC", "UPI"],
+      "ignoreWords": []
+    }
+  },
+  "approved": {
+    "fontFamilies": [],
+    "colors": [],
+    "terms": []
+  }
+}

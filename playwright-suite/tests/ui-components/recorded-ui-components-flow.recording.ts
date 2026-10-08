@@ -1,0 +1,65 @@
+import { test, expect } from '@playwright/test';
+
+test.use({
+  storageState: 'storage/auth.json'
+});
+
+test('test', async ({ page }) => {
+  await page.goto('https://june.ledgers.cloud/ui-components');
+  await page.getByRole('textbox', { name: 'Search ui components...' }).click();
+  await page.getByRole('textbox', { name: 'Search ui components...' }).fill('');
+  await page.getByRole('radio').nth(1).click();
+  await page.getByRole('radio').first().click();
+  await page.getByRole('radio').nth(2).click();
+  await page.getByRole('button', { name: 'Create UI Component' }).click();
+  await page.getByRole('textbox', { name: 'Name *' }).click();
+  await page.getByRole('textbox', { name: 'Name *' }).fill('test');
+  await page.getByRole('textbox', { name: 'Name *' }).press('Tab');
+  await page.getByRole('textbox', { name: 'Description *' }).fill('test');
+  await page.getByRole('textbox', { name: 'Description *' }).press('Tab');
+  await page.getByRole('option', { name: 'Table' }).click();
+  await page.getByRole('option', { name: 'Table' }).click();
+  await page.getByRole('option', { name: 'Table' }).click();
+  await page.getByText('Form', { exact: true }).click();
+  await page.getByRole('option', { name: 'Form' }).click();
+  await page.getByText('Card', { exact: true }).click();
+  await page.getByRole('option', { name: 'Card' }).click();
+  await page.getByText('List', { exact: true }).click();
+  await page.getByRole('option', { name: 'List', exact: true }).click();
+  await page.getByText('Chart').click();
+  await page.getByRole('option', { name: 'Chart' }).click();
+  await page.getByRole('listbox').getByText('Catalog').click();
+  await page.locator('body').click();
+  await page.getByText('Checkout').click();
+  await page.locator('body').click();
+  await page.getByRole('listbox').getByText('Checkout').click();
+  await page.locator('body').click();
+  await page.getByText('Suggestion List').click();
+  await page.getByRole('tab', { name: 'Designs' }).click();
+  await page.getByRole('textbox', { name: 'Describe layout, fields, data' }).click();
+  await page.getByRole('textbox', { name: 'Describe layout, fields, data' }).fill('s');
+  await page.getByRole('button', { name: 'Generate JSON and React code' }).click();
+  await page.getByRole('textbox', { name: '{ "component_name", "' }).click();
+  await page.getByRole('textbox', { name: 'Generate or write React code' }).click();
+  await page.getByRole('button', { name: 'Run' }).click();
+  await page.getByRole('tab', { name: 'Visibility' }).click();
+  await page.getByRole('button', { name: 'Create', exact: true }).click();
+  await page.getByLabel('', { exact: true }).click();
+  await page.getByRole('menuitem', { name: 'Edit' }).click();
+  await page.getByRole('textbox', { name: 'Name *' }).click();
+  await page.getByRole('textbox', { name: 'Name *' }).fill('test test');
+  await page.locator('body').click();
+  await page.getByRole('option', { name: 'Catalog' }).click();
+  await page.getByRole('tab', { name: 'Designs' }).click();
+  await page.getByRole('textbox', { name: 'Describe layout, fields, data' }).click();
+  await page.getByRole('textbox', { name: 'Describe layout, fields, data' }).fill('tu');
+  await page.getByRole('button', { name: 'Generate JSON and React code' }).click();
+  await page.getByRole('textbox', { name: '{ "component_name", "' }).click();
+  await page.getByRole('textbox', { name: 'Generate or write React code' }).click();
+  await page.getByRole('button', { name: 'Run' }).click();
+  await page.getByRole('tab', { name: 'Visibility' }).click();
+  await page.getByRole('button', { name: 'Update', exact: true }).click();
+  await page.getByLabel('', { exact: true }).click();
+  await page.getByText('Delete').click();
+  await page.getByRole('button', { name: 'Delete' }).click();
+});

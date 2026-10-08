@@ -1,0 +1,17 @@
+{
+  "defaultEnvironment": "dev",
+  "environments": {
+    "dev": {
+      "baseURL": "https://junedev.ledgers.cloud",
+      "authEntryURL": "https://dev-v4.ledgers.cloud/in/ai-agents"
+    },
+    "uat": {
+      "baseURL": "https://juneuat.ledgers.cloud",
+      "authEntryURL": "https://uat-v4.ledgers.cloud/in/ai-agents"
+    },
+    "live": {
+      "baseURL": "https://june.ledgers.cloud",
+      "authEntryURL": "https://ledgers.cloud/in/ai-agents"
+    }
+  }
+}

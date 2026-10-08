@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QA Copilot</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🧪</text></svg>">
+</head>
+<body>
+
+<aside id="sidebar">
+  <div class="brand">
+    <span class="logo">🧪</span>
+    <div>
+      <strong>QA Copilot</strong>
+      <small id="scanner-mode">checking scanner…</small>
+    </div>
+  </div>
+
+  <div class="side-section">
+    <div class="side-head">
+      <span>Projects</span>
+      <button class="icon" id="btn-new-project" title="New project">+</button>
+    </div>
+    <ul id="project-list" class="project-list"></ul>
+  </div>
+
+  <div class="side-foot">
+    <label class="file-import">
+      <input type="file" id="import-file" accept=".json" hidden>
+      Restore from backup
+    </label>
+    <button id="btn-theme" class="link">Toggle theme</button>
+  </div>
+</aside>
+
+<main id="main">
+  <div id="empty-state" class="empty">
+    <h1>🧪 QA Copilot</h1>
+    <p>Paste a URL. Get test cases, a test plan and a Playwright suite.<br>
+       No API key, no account, nothing to pay for.</p>
+    <button class="primary big" id="btn-first-project">Create your first project</button>
+  </div>
+
+  <div id="workspace" hidden>
+    <header class="topbar">
+      <div>
+        <h1 id="project-name"></h1>
+        <p id="project-meta" class="muted"></p>
+      </div>
+      <div class="topbar-actions">
+        <button id="btn-project-settings" class="ghost">Settings</button>
+        <button id="btn-delete-project" class="ghost danger">Delete</button>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="pages">Pages &amp; scanning</button>
+      <button class="tab" data-tab="cases">Test cases <span id="case-count" class="pill">0</span></button>
+      <button class="tab" data-tab="plan">Test plan</button>
+      <button class="tab" data-tab="export">Export &amp; code</button>
+    </nav>
+
+    <!-- ---------------------------------------------------------- PAGES -->
+    <section class="panel active" data-panel="pages">
+      <div class="card">
+        <h2>Add pages</h2>
+        <p class="muted">One URL per line. The scanner reads the real DOM — field
+           attributes, dropdown options, buttons, links and API calls — and every
+           test case is derived from what it actually finds.</p>
+        <textarea id="url-input" rows="3" placeholder="https://app.example.com/register&#10;https://app.example.com/profile"></textarea>
+        <div class="row">
+          <input id="module-input" placeholder="Module name (optional)">
+          <button class="primary" id="btn-add-pages">Add pages</button>
+        </div>
+      </div>
+
+      <div id="page-list"></div>
+    </section>
+
+    <!-- ---------------------------------------------------------- CASES -->
+    <section class="panel" data-panel="cases">
+      <div class="filters">
+        <input id="f-search" placeholder="Search title, steps, expected result…  (press /)">
+        <select id="f-page"><option value="">All pages</option></select>
+        <select id="f-category"><option value="">All categories</option></select>
+        <select id="f-priority"><option value="">All priorities</option></select>
+        <select id="f-type"><option value="">Manual + Automation</option><option>Manual</option><option>Automation</option></select>
+        <select id="f-source"><option value="">All sources</option><option value="rules">Rules</option><option value="codex">Codex</option><option value="manual">Manual</option></select>
+        <label class="check"><input type="checkbox" id="f-smoke"> Smoke only</label>
+        <button class="ghost" id="btn-clear-filters">Clear</button>
+      </div>
+
+      <div class="bulkbar" id="bulkbar" hidden>
+        <span id="bulk-count"></span>
+        <select id="bulk-status"><option value="">Set status…</option><option>Not Run</option><option>Pass</option><option>Fail</option><option>Blocked</option><option>Skipped</option></select>
+        <select id="bulk-priority"><option value="">Set priority…</option><option>P1</option><option>P2</option><option>P3</option><option>P4</option></select>
+        <select id="bulk-type"><option value="">Set type…</option><option>Manual</option><option>Automation</option></select>
+        <button class="ghost danger" id="bulk-delete">Delete selected</button>
+      </div>
+
+      <div id="coverage-strip"></div>
+
+      <div class="table-wrap">
+        <table id="case-table">
+          <thead>
+            <tr>
+              <th class="tiny"><input type="checkbox" id="select-all"></th>
+              <th class="tiny"></th>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Module</th>
+              <th>Category</th>
+              <th>Type</th>
+              <th>Pri</th>
+              <th>Sev</th>
+              <th>Status</th>
+              <th>Src</th>
+            </tr>
+          </thead>
+          <tbody id="case-body"></tbody>
+        </table>
+      </div>
+      <p id="case-empty" class="muted center" hidden>No cases match. Scan a page and generate, or clear the filters.</p>
+    </section>
+
+    <!-- ----------------------------------------------------------- PLAN -->
+    <section class="panel" data-panel="plan">
+      <div class="card">
+        <div class="row between">
+          <h2>Test plan</h2>
+          <div>
+            <button class="ghost" id="btn-summary">Load summary report</button>
+            <button class="primary" id="btn-build-plan">Rebuild from current cases</button>
+          </div>
+        </div>
+        <p class="muted">Every number is computed from your actual case list. Edit freely — it saves as you type.</p>
+        <textarea id="plan-editor" rows="30" spellcheck="false"></textarea>
+        <div class="row">
+          <button class="ghost" id="btn-save-plan">Save</button>
+          <a class="ghost btn" id="btn-download-plan">Download .md</a>
+          <span id="plan-status" class="muted"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------- EXPORT -->
+    <section class="panel" data-panel="export">
+      <div class="card">
+        <h2>Export test cases</h2>
+        <p class="muted">Exports respect nothing but the project — use the filters on the Test cases tab first if you want a subset, then come back and use "filtered".</p>
+        <div class="grid">
+          <a class="export-tile" id="x-xlsx"><strong>Excel</strong><span>One sheet per module, summary sheet, styled ranges (no Table objects)</span></a>
+          <a class="export-tile" id="x-csv"><strong>CSV</strong><span>Flat, all columns</span></a>
+          <a class="export-tile" id="x-jira"><strong>Jira / Xray CSV</strong><span>Summary, steps, priority mapped to Jira fields</span></a>
+          <a class="export-tile" id="x-md"><strong>Markdown</strong><span>For docs and PRs</span></a>
+          <a class="export-tile" id="x-plan"><strong>Test plan .md</strong><span>IEEE-829 style with RTM</span></a>
+          <a class="export-tile" id="x-json"><strong>JSON backup</strong><span>Everything — restore from the sidebar</span></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Playwright suite</h2>
+        <p class="muted">Generates a full TypeScript project: config with dev/UAT/prod,
+           one Page Object per scanned page, specs grouped by category with
+           <code>@smoke</code>/<code>@security</code> tags, an auth fixture that
+           logs in once, the Indian data factory, a MySQL result reporter and a
+           GitHub Actions workflow.</p>
+        <div class="row">
+          <a class="primary btn" id="x-zip">Download suite as .zip</a>
+          <button class="ghost" id="btn-codegen-disk">Write to workspace folder</button>
+          <span id="codegen-status" class="muted"></span>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="drawer" class="drawer" hidden></div>
+<div id="modal" class="modal" hidden></div>
+<div id="toast" class="toast" hidden></div>
+
+<script src="/app.js"></script>
+</body>
+</html>

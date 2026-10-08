@@ -1,0 +1,17 @@
+node_modules/
+.env
+.env.*
+!.env.example
+data/
+workspace/generated/
+workspace/auth/
+workspace/artifacts/
+workspace/deliveries/
+workspace/recordings/
+workspace/inbox/*
+!workspace/inbox/.gitkeep
+workspace/outbox/*
+!workspace/outbox/.gitkeep
+.playwright-mcp/
+*.log
+.DS_Store

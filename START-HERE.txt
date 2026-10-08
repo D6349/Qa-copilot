@@ -1,0 +1,119 @@
+========================================================
+  QA COPILOT  —  your personal QA assistant
+========================================================
+
+Paste a URL. Get test cases, a test plan, and a
+ready-to-run Playwright suite.
+
+No API key. No account. Nothing to pay for.
+
+
+--------------------------------------------------------
+HOW TO START
+--------------------------------------------------------
+
+WINDOWS
+  Double-click  START.bat
+
+MAC / LINUX
+  Double-click  start.sh
+  (or in a terminal:  ./start.sh )
+
+Your browser opens at http://localhost:4100
+
+Everything is already installed. You do not need to run
+npm install. You do need Node.js on the machine — if you
+do not have it, START.bat will tell you and point you to
+https://nodejs.org (take the LTS version).
+
+Leave the black window open while you work. Closing it
+stops QA Copilot.
+
+
+--------------------------------------------------------
+FIRST FIVE MINUTES
+--------------------------------------------------------
+
+A demo project is created on first run so you can see
+the whole flow before pointing it at anything real.
+
+  1. Open the "Test cases" tab.
+     106 cases, generated from a 13-field form.
+     Click the small arrow on any row to see the steps.
+
+  2. Go to "Export & code".
+     Download the Excel file. One sheet per module.
+
+  3. Go to "Pages & scanning".
+     Press "Re-scan" to see the scanner run.
+
+Then make your own project:
+
+  4. Press + next to PROJECTS in the sidebar.
+     Fill in your dev / UAT / prod URLs and your
+     employee GIDs (these end up in the MySQL rows).
+
+  5. Paste a page URL. Press "Scan".
+
+  6. Press "Generate test cases".
+
+
+--------------------------------------------------------
+SCANNING PAGES BEHIND A LOGIN
+--------------------------------------------------------
+
+Out of the box the scanner fetches the page directly.
+That works for normal server-rendered pages.
+
+For pages that need JavaScript to render, or pages
+behind a login, run once:
+
+  Double-click  ENABLE-BROWSER-SCANNING.bat
+
+It downloads Chromium (about 130 MB). After restarting,
+the sidebar will say "full browser scanner".
+
+If a page still cannot be reached, use the "Paste HTML"
+button instead — open the page yourself, copy the DOM
+from devtools, and paste it in.
+
+
+--------------------------------------------------------
+WHERE YOUR WORK IS SAVED
+--------------------------------------------------------
+
+The  data  folder IS the database. Plain JSON files.
+
+  - Back it up by copying that folder.
+  - Move to another laptop by copying that folder.
+  - Open any file in Notepad to read it.
+
+No database to install. No migrations. Nothing to break.
+
+There is also a JSON backup button under "Export &
+code", and a "Restore from backup" link at the bottom
+of the sidebar.
+
+
+--------------------------------------------------------
+ONE THING TO KNOW ABOUT THE PLAYWRIGHT SUITE
+--------------------------------------------------------
+
+The generated specs contain every manual step and the
+expected result, with real Page Objects and locators.
+
+The assertions inside each step are left as TODO. That
+is on purpose. An assertion guessed from a DOM scan
+passes for the wrong reason, and a green suite that
+tests nothing is worse than no suite at all.
+
+Start with the smoke tests:  npm run test:smoke
+
+
+--------------------------------------------------------
+MORE DETAIL
+--------------------------------------------------------
+
+README.md explains how the rules engine works, the
+Codex hand-off for cases the rules cannot derive, every
+export format, and how to host this on a server.

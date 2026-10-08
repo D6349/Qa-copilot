@@ -1,0 +1,16 @@
+{
+  "name": "checkout-visual-flow",
+  "steps": [
+    { "checkpoint": "product-list" },
+    {
+      "action": "click",
+      "locator": { "role": { "type": "button", "name": "Add to cart" } }
+    },
+    { "checkpoint": "cart-added" },
+    {
+      "action": "click",
+      "locator": { "role": { "type": "link", "name": "Cart" } }
+    },
+    { "checkpoint": "cart-page" }
+  ]
+}

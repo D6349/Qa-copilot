@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "expectedAutomatedCases": 217,
+  "modules": [
+    {
+      "slug": "account",
+      "displayName": "Account",
+      "casePrefix": "AC",
+      "caseCount": 12,
+      "spec": "tests/account/account.setup.ts",
+      "pageObject": "pages/account.page.ts",
+      "caseCatalog": "test-cases/account-flow-cases.ts",
+      "dataWorkbook": "test-data/account-data-driven.xlsx",
+      "uiUxWorkbook": "test-data/Workbook/account-ui-ux-test-cases.xlsx"
+    },
+    {
+      "slug": "agents",
+      "displayName": "Agents",
+      "casePrefix": "AF",
+      "caseCount": 30,
+      "spec": "tests/agents/agents-flow.spec.ts",
+      "pageObject": "pages/agents.page.ts",
+      "caseCatalog": "test-cases/agent-flow-cases.ts",
+      "dataWorkbook": "test-data/agents-data-driven.xlsx",
+      "uiUxWorkbook": "test-data/Workbook/agents-ui-ux-test-cases.xlsx"
+    },
+    {
+      "slug": "tools",
+      "displayName": "Tools",
+      "casePrefix": "TL",
+      "caseCount": 49,
+      "spec": "tests/tools/tools-flow.spec.ts",
+      "pageObject": "pages/tools.page.ts",
+      "caseCatalog": "test-cases/agent-flow-cases.ts",
+      "dataWorkbook": "test-data/tools-data-driven.xlsx",
+      "uiUxWorkbook": "test-data/Workbook/tools-ui-ux-test-cases.xlsx"
+    },
+    {
+      "slug": "connectors",
+      "displayName": "Connectors",
+      "casePrefix": "CN",
+      "caseCount": 24,
+      "spec": "tests/connectors/connectors-flow.spec.ts",
+      "pageObject": "pages/connectors.page.ts",
+      "caseCatalog": "test-cases/connector-flow-cases.ts",
+      "dataWorkbook": "test-data/connectors-data-driven.xlsx",
+      "uiUxWorkbook": "test-data/Workbook/connectors-ui-ux-test-cases.xlsx"
+    },
+    {
+      "slug": "knowledge",
+      "displayName": "Knowledge",
+      "casePrefix": "KB",
+      "caseCount": 30,
+      "spec": "tests/knowledge/knowledge-flow.spec.ts",
+      "pageObject": "pages/knowledge.page.ts",
+      "caseCatalog": "test-cases/knowledge-flow-cases.ts",
+      "dataWorkbook": "test-data/knowledge-data-driven.xlsx",
+      "uiUxWorkbook": "test-data/Workbook/knowledge-ui-ux-test-cases.xlsx"
+    },
+    {
+      "slug": "guardrails",
+      "displayName": "Guardrails",
+      "casePrefix": "GR",
+      "caseCount": 30,
+      "spec": "tests/guardrails/guardrails-flow.spec.ts",
+      "pageObject": "pages/guardrails.page.ts",
+      "caseCatalog": "test-cases/guardrail-flow-cases.ts",
+      "dataWorkbook": "test-data/guardrails-data-driven.xlsx",
+      "uiUxWorkbook": "test-data/Workbook/guardrails-ui-ux-test-cases.xlsx"
+    },
+    {
+      "slug": "ui-components",
+      "displayName": "UI Components",
+      "casePrefix": "UC",
+      "caseCount": 30,
+      "spec": "tests/ui-components/ui-components-flow.spec.ts",
+      "pageObject": "pages/ui-components.page.ts",
+      "caseCatalog": "test-cases/ui-component-flow-cases.ts",
+      "dataWorkbook": "test-data/ui-components-data-driven.xlsx",
+      "uiUxWorkbook": "test-data/Workbook/ui-components-ui-ux-test-cases.xlsx"
+    },
+    {
+      "slug": "product-tour",
+      "displayName": "Product Tour",
+      "casePrefix": "PT",
+      "caseCount": 12,
+      "spec": "tests/product-tour/product-tour-flow.spec.ts",
+      "pageObject": "pages/product-tour.page.ts",
+      "caseCatalog": "test-cases/product-tour-flow-cases.ts",
+      "dataWorkbook": "test-data/product-tour-data-driven.xlsx",
+      "uiUxWorkbook": "test-data/Workbook/product-tour-ui-ux-test-cases.xlsx"
+    }
+  ]
+}

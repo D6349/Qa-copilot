@@ -1,0 +1,19 @@
+{
+  "themes": ["light", "dark"],
+  "capture": {
+    "ignoreSelectors": [".third-party-chat"],
+    "maskSelectors": ["[data-dynamic-user]", "[data-sensitive]"]
+  },
+  "approved": {
+    "fontFamilies": ["Inter", "Arial", "sans-serif"],
+    "colors": ["#0f172a", "#ffffff", "#2563eb", "#dc2626"],
+    "terms": ["YourProductName", "Aadhaar", "GSTIN"]
+  },
+  "content": {
+    "spelling": {
+      "locale": "en-IN",
+      "words": ["YourProductName"],
+      "ignoreWords": []
+    }
+  }
+}
